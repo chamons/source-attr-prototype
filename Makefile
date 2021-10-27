@@ -24,7 +24,7 @@ generator: generator/bin/Debug/net5.0/generator.dll
 attr_converter/bin/Debug/net5.0/attr_converter.dll: attr_converter/EntryPoint.cs attr_converter/attr_converter.csproj
 	$(Q) dotnet build attr_converter/ $(BUILD_ARGS)
 
-binding/bin/Debug/net5.0/binding.dll: binding/binding.cs binding/binding.csproj
+binding/bin/Debug/net5.0/binding.dll: binding/binding.cs binding/binding.csproj binding/PlatformAvailability2.cs
 	$(Q) dotnet build binding/ $(BUILD_ARGS)
 
 generator/bin/Debug/net5.0/generator.dll: generator/EntryPoint.cs generator/generator.csproj

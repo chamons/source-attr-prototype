@@ -6,7 +6,10 @@ BUILD_ARGS=-v:quiet --nologo --no-restore
 CLEAN_ARGS=-v:quiet --nologo
 RESTORE_ARGS=-v:quiet --nologo
 
-all: converter binding generator
+run: build
+	$(Q) dotnet run --project generator/
+
+build: converter binding generator
 	@:
 
 converter: attr_converter/bin/Debug/net5.0/attr_converter.dll

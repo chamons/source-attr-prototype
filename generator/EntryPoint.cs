@@ -22,7 +22,8 @@ namespace generator
             using (var mlc = new MetadataLoadContext(resolver))
             {
                 Assembly assembly = mlc.LoadFromAssemblyPath(BindingPath);
-                foreach (var type in assembly.GetTypes().Where(t => t.IsInterface)) {
+                foreach (var type in assembly.GetTypes().Where(t => t.IsClass && !t.Name.EndsWith("Attribute"))) {
+                    
                     Console.WriteLine ($"{type.Name}:");
                     foreach (var member in type.GetMembers()) {                        
                         foreach (var attr in member.GetCustomAttributesData()) {

@@ -37,10 +37,10 @@ namespace attr_converter
         public void Execute(GeneratorExecutionContext context)
         {
             var receiver = (SyntaxReceiver)context.SyntaxReceiver;
-
+    
             foreach (var klass in receiver.ClassCandidates) {                
                 if (klass.AttributeLists.SelectMany(a => a.Attributes).Any(a => IsAvailabilityAttribute(a.Name.ToString()))) {    
-                    Generated.Append ($"partial class {klass.Identifier} {{}}");
+                    Generated.Append ($"[ObjCRuntime.Introduced (ObjCRuntime.PlatformName.iOS, 20, 0)]partial class {klass.Identifier} {{}}");
                 }
             }
             context.AddSource($"attributes.g.cs", SourceText.From(Generated.ToString(), Encoding.UTF8));
